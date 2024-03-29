@@ -39,7 +39,6 @@ module.exports = (plugin) => {
   };
 
   plugin.controllers.user.getSyncUsers = async (ctx) => {
-    console.log("ctx.request =>>>", ctx.query);
     const offset = ctx.query.offset || 0;
     const limit = ctx.query.limit || 10;
     if (!ctx.state.user) {
@@ -56,7 +55,6 @@ module.exports = (plugin) => {
           limit,
         });
 
-      console.log("syncUsers =>>>", syncUsers);
       return { status: 200, syncUsers };
     } catch (error) {
       return { status: 500, message: "Internal server error" };
